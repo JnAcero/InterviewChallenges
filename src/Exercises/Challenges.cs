@@ -1,4 +1,7 @@
-﻿namespace Exercises;
+﻿using Newtonsoft.Json.Linq;
+using src.Services;
+
+namespace Exercises;
 
 public class Challenges
 {
@@ -61,6 +64,19 @@ public class Challenges
 
         return phraseEmojified;
     }
-
-
+    public static double TotalSavory(){
+        double acumulator = 0;
+        JArray array = ChallengeService.ReadAndLoadDataFromFile("../../../../../data.json");
+        try{
+        foreach(var item in array){
+            if(item["type"].ToString() == "savory"){
+                acumulator = acumulator + (double)item["price"]; 
+            }
+        }
+        return Math.Round(acumulator,2);
+        }catch(Exception e){
+            Console.WriteLine(e.Message);
+            return 0;
+        }
+    }
 }

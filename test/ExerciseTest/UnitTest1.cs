@@ -1,4 +1,5 @@
 using Exercises;
+using src.Services;
 
 namespace ExerciseTest;
 
@@ -55,7 +56,11 @@ public class UnitTest1
         Assert.AreEqual("I ♥ my cat",result1);
         Assert.AreEqual("I ♥ the 🥳 with my boyfrind",result2);
     }
+    [TestMethod]
+    public void Test_TotalSavory()
+    {
+        double result = Challenges.TotalSavory();
 
-
-
+        Assert.AreEqual(9.97, result);
+    }
 }
